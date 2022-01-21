@@ -11,6 +11,7 @@ jobs:
           install-yarn: true
           node-version: '16.13'
       - run: node --version
+      - run: git tag -a sb_test -m "my sb_test"
 workflows:
   test_my_app:
     jobs:
