@@ -1,23 +1,17 @@
-version: 2.1
+version: '2.1'
 orbs:
-  gcp-cli: circleci/gcp-cli@2.4.0
   node: circleci/node@5.0.0
 jobs:
-  build_test:
+  install-node-example:
     docker:
-      - image: shaharboroc/multi-client
-        auth:
-          username: shaharboroc
-          password: $DOCKERHUB_PASSWORD
+      - image: 'cimg/base:stable'
     steps:
       - checkout
       - node/install:
           install-yarn: true
           node-version: '16.13'
-      - run: sudo npm install -g npm@latest
-      - run: npm run test
-
+      - run: node --version
 workflows:
-  build_test_deploy:
+  test_my_app:
     jobs:
-      - build_test
+      - install-node-example
