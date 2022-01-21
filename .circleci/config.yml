@@ -10,6 +10,10 @@ jobs:
           username: shaharboroc
           password: $DOCKERHUB_PASSWORD
     steps:
+      - checkout
+      - node/install:
+          install-yarn: true
+          node-version: '16.13'
       - run:
           name: Run Tests
           command: |
